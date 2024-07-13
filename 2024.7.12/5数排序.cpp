@@ -5,7 +5,8 @@
 std::vector<int> quick_sort(const std::vector<int>& arr) //使用引用防止重复调用
 {
     int len = arr.size();
-    if (len <= 1) {
+    if (len <= 1) 
+    {
         return arr;
     }
     int mid = arr[0];

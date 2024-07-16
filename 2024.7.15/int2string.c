@@ -24,7 +24,7 @@ int main()
     int index = 0;
     for (i; i >= 0; i--)
     {
-        res[i] = (char)(tmp[index++] + '0');
+        res[index++] = (char)(tmp[i] + '0');
         // printf("---%s\n", res);
     }
 

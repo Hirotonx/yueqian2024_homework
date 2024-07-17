@@ -8,6 +8,7 @@ int main()
 	printf("输入的字符串是::%s\n", input);
 	char res[100];
 	int res_index = 0;
+	
 	//遍历子串或者遍历char ASCII字符
 	for (int i = 'A'; i <= 'Z'; i++)
 	{

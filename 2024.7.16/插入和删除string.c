@@ -7,7 +7,7 @@ void insert_(char **arr, int idx, const char *insert_val)
     int arr_len = strlen(*arr);
     int insert_len = strlen(insert_val);
 
-    // 计算新数组的长度
+    // 新数组的长度
     int new_len = arr_len + insert_len;
 
     // 分配新空间
@@ -31,57 +31,42 @@ void insert_(char **arr, int idx, const char *insert_val)
     }
 }
 
-char *remove_(char *str, const char *rm_str)
+//双指针
+void remove_(char *str, const char *rm_str)
 {
     int len = strlen(str);
     int rm_len = strlen(rm_str);
 
-    // 如果要删除的字符串比原字符串长，直接返回原字符串
-    if (len < rm_len)
-    {
-        printf("输入有误\n");
-        return NULL;
-    }
-
-    // 分配足够大的空间来存储结果，最多可能为原字符串长度
-    char *res = (char *)malloc((len + 1) * sizeof(char));
-    if (res == NULL)
-    {
-        printf("内存分配失败\n");
-        return NULL;
-    }
-
-    int res_index = 0;
-    int i = 0;
-    while (i < len)
+    
+    for (int end = 0; end <= len - rm_len;)
     {
         int match = 1;
-        for (int j = 0; j < rm_len; j++)
+        // 检查是否匹配子字符串
+        for (int beg = 0; beg < rm_len; beg++)
         {
-            if (i + j >= len || str[i + j] != rm_str[j])
+            if (str[beg + end] != rm_str[beg])
             {
                 match = 0;
                 break;
             }
         }
+
         if (match)
         {
-            i += rm_len; // 跳过已匹配的部分
+            
+            for (int j = end; j < len - rm_len; j++)
+            {
+                str[j] = str[j + rm_len];
+            }
+            len -= rm_len; // 更新字符串长度
         }
         else
         {
-            res[res_index++] = str[i++];
+            end++; 
         }
     }
-
-    res[res_index] = '\0';
-
-    // 释放原字符串内存
-    free(str);
-
-    return res;
+    str[len] = '\0'; // 添加字符串结束符
 }
-
 int main(void)
 {
     char *arr = (char *)malloc(20 * sizeof(char));
@@ -93,7 +78,7 @@ int main(void)
     printf("插入后的字符串: %s\n", arr);
 
     // 删除字符串
-    arr = remove_(arr, "insert_val");
+    remove_(arr, "insert_val");
     printf("删除后的字符串: %s\n", arr);
 
     // 释放内存

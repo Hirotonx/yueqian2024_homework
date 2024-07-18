@@ -30,7 +30,7 @@ char* float2str(float num)
     float dec_num = num - (int)num;//小数部分
     int count_0 = 0;//防止0.00x的情况做的统计
     int sign = 0;//负数符号位
-    if(num<0){num *= -1;}//负数转换成正数
+    if(num<0){num *= -1;sign++;}//负数转换成正数
 
     //不断对小数部分*10直到小数部分和强制转换整数后的值相等
     while((dec_num -(int)dec_num) != 0.0)

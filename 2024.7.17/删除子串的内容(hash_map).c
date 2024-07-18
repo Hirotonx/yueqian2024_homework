@@ -13,6 +13,7 @@ char* remove_(char* str,const char* rm_str)
     for (int i = 0; i < strlen(rm_str);i++)
     {
         if(rm_str[i] < 'a'){hash[rm_str[i] + 'a'] = 1;}
+        else{hash[rm_str[i] - 'a'] = 1;}
         hash[rm_str[i]] = 1;
     }
     //

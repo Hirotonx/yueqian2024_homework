@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int place = 0;
-
+int place = 0;//匹配到切给点的值
 char *strpop_(char *str, char rm_char)
 {
     if (place >= strlen(str))
@@ -21,7 +20,6 @@ char *strpop_(char *str, char rm_char)
     // 没匹配的情况
     if (str[i] == '\0')
     {
-        // 计算需要分配的内存大小
         int len = strlen(str) - place;
 
         // 分配内存并复制前部分的字符串
@@ -51,8 +49,8 @@ char *strpop_(char *str, char rm_char)
 
 int main()
 {
-    char test_str[] = "hello_world_test";
-    char rm_char = '_';
+    char test_str[] = "192.168.1.18@10000@I love you ";
+    char rm_char = '0';
 
     printf("原始字符串: %s\n", test_str);
 

@@ -34,16 +34,16 @@ char *longest_common_substring(char *str1, char *str2)
     // 保存结果
     char *res = (char *)malloc(sizeof(char) * (res_len + 1));
     int idx = 0;
-    for (int i = end - res_len; i < end; i++)
+    for (int i = end - res_len; i < end; i++)//矩阵i j对应字符串索引+1,所以end是最长子串索引+1
     {
         res[idx++] = str1[i];
     }
     res[res_len] = '\0';
 
-    // 释放dp数组的内存
+    // 释放dp矩阵的内存
     for (int i = 0; i <= len1; i++)
     {
-        free(dp[i]); // 释放dp数组的每一行
+        free(dp[i]); // 释放dp矩阵的每一行
     }
     free(dp);
     return res;

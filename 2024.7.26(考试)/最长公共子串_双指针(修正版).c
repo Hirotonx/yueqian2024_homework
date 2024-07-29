@@ -5,7 +5,7 @@
 /* 两个字符串的最子串(修正版)*/
 
 
-char *ReturnMaxStr(char *str1, char *str2)
+char *ReturnLongestSubstr(char *str1, char *str2)
 {
     int len1 = strlen(str1);
     int len2 = strlen(str2);
@@ -50,7 +50,7 @@ int main()
 {
     char str1[] = "123456669";
     char str2[] = "22442669242";
-    char *result = ReturnMaxStr(str1, str2);
+    char *result = ReturnLongestSubstr(str1, str2);
 
     printf("Longest common substring between '%s' and '%s' is '%s'\n", str1, str2, result);
 

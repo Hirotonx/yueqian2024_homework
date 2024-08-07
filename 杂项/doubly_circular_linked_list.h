@@ -6,7 +6,7 @@ typedef struct ListNode
     int val;
     struct ListNode *next;
     struct ListNode *back;
-    char *arr;
+    unsigned int *arr;
 } ListNode;
 
 extern ListNode *head;

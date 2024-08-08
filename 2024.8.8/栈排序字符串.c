@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define SIZE 1024
 
-typedef int stack_data;
+typedef char stack_data;
 
 // 用于选择合适的格式控制符
 #define FORMAT_SPECIFIER(x) _Generic((x), \
@@ -69,26 +69,17 @@ void stack_free(Stack *stack)
 int main()
 {
     Stack *stack = init_stack();
+    push(stack, 'h');
+    push(stack, 'e');
+    push(stack, 'l');
+    push(stack, 'l');
+    push(stack, 'o');
 
-    push(stack, 10);
-    push(stack, 20);
-    push(stack, 30);
-
-    printf("当前栈内容:\n");
     display(stack);
-
-    printf("栈顶元素: ");
-    printf(FORMAT_SPECIFIER(peek(stack)), peek(stack));
-    printf("\n");
-
-    printf("出栈元素: ");
-    printf(FORMAT_SPECIFIER(pop(stack)), pop(stack));
-    printf("\n");
-
-    printf("出栈后栈内容:\n");
-    display(stack);
-
-    stack_free(stack);
-
-    return 0;
+    stack_data current;
+    while(stack->size > 0)
+    {
+        current = pop(stack);
+        printf(FORMAT_SPECIFIER(current), current);
+    }
 }
